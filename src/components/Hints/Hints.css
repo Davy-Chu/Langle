@@ -1,0 +1,23 @@
+.hints{
+    margin:10px;
+    display:flex;
+    justify-content: center;
+}
+.hint-tabs{
+    border:1px solid gray;
+    margin-right:3px;
+    border-radius:3px;
+    height:40px;
+    display:flex;
+    justify-content:center;
+    align-items:center;
+}
+#lang{
+    width:200px;
+}
+#lang-family{
+    width:300px;
+}
+#progress{
+    width:50px;
+}

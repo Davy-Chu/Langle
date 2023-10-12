@@ -1,0 +1,11 @@
+.display{
+    border:1px solid blue;
+    height:250px;
+    display:flex;
+    flex-direction:column;
+    /* justify-content:center; */
+    align-items:center;
+}
+#guessCount{
+    border:1px solid gray;
+}

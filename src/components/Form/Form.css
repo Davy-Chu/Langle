@@ -1,0 +1,17 @@
+.form{
+    /* border:1px solid blue;    */
+    display:flex;
+    justify-content: center;
+    margin:5px;
+}
+#text-input{
+    border-radius:5px;
+    margin-right:2px;
+    height:30px;
+    width:200px;
+}
+#submit-button{
+    border-radius:5px;
+    height:35px;
+}
+    

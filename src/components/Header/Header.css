@@ -1,0 +1,22 @@
+.header{
+    margin-top: 15px;
+    display:flex;
+    justify-content:center;
+    /* background-color:red; */
+}
+#title{
+    margin:0px;
+    padding:0px;
+    width:600px;
+    display:flex;
+    justify-content:center;
+    /* border:1px solid gray; */
+    border-bottom:1px solid gray;
+    font-weight:10px;
+}
+#bolded{
+    color:blue;
+    font-weight:bold;
+    width:60px;
+    margin:0px;
+}
