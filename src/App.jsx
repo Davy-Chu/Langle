@@ -14,23 +14,29 @@ Form in the middle of page that gives hints after each try
 After each try: Lets you know if the language is related/closer in the language tree
 */
 function App() {
-  const languages = ["Chinese", "Spanish", "French", "Japanese","Arabic","German","Russian","Portugese",
-    "Italian","Turkish","Korean","Polish","Dutch","Swedish","Indonesian","Greek","Hebrew","Thai","Czech","Farsi"];
+  const languages = ["chinese", "spanish", "french", "japanese","arabic","german","russian","portugese",
+    "italian","turkish","korean","polish","dutch","swedish","indonesian","greek","hebrew","thai","czech","farsi"];
   const [guessCount, setCount] = useState(0);
   const [language, setLanguage] = useState("wtf");
+  //Chooses a random language from the list of languages
   function getLang(){
     const randNum = Math.floor(Math.random() * languages.length);
     setLanguage(languages[randNum]);
+    
   }
+  //Increases the guess count when an incorrect guess is made
   const incrementCount = () => { 
     setCount(guessCount + 1);
   }
   useEffect(() => {
     
     getLang();
-    
+    console.log(language);
   }, [])
-
+  const [guessed, setGuessed] = useState([]);
+  const addToGuessed = (lang) => {
+    setGuessed([...guessed, lang]);
+  }
   const [hintsList, setHintsList] = React.useState([
     {
       lang: "Chinese",
@@ -39,8 +45,12 @@ function App() {
       id: "1"
     }
   ])
-  const addHint = () => {
-    setHintsList([...hintsList, {lang:"Spanish", langFamily:"Indo-European", emoji:"❄️", id:"2"}]);
+  //Adds a hint element to the page if a guess is incorrect
+  const addHint = (hint) => {
+    hint.lang = hint.lang[0].toUpperCase() + hint.lang.slice(1);
+    console.log(hint.lang)
+    setHintsList([...hintsList, {lang:hint.lang, langFamily:"Indo-European", emoji:"❄️", id:"2"}]);
+
   }
   return (
     <div className="app">
@@ -53,9 +63,11 @@ function App() {
             addHint={addHint}
             incrementCount={incrementCount}
             languageList={languages}
+            addToGuessed={addToGuessed}
+            guessed={guessed}
       />
       {hintsList.map(hint => {
-        console.log(hintsList);
+        // console.log(hintsList);
         return(
           <Hints
             key={hint.id}
@@ -65,11 +77,6 @@ function App() {
           />
         )
         })}
-      <Hints
-        lang="Spanish"
-        langFamily="Indo-European"
-        emoji="❄️"
-      />
     </div>
   )
 }

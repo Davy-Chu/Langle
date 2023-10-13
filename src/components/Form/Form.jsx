@@ -3,17 +3,19 @@ import React from 'react'
 export default function Form(props) {
     const [formData, setFormData] = React.useState("");
     // console.log(formData)
-    const {lang, addHint, languageList, incrementCount} = props;
+    const {lang, addHint, languageList, incrementCount, addToGuessed, guessed} = props;
     function handleGuess(event){
         event.preventDefault()
-        console.log(formData)
-        if(formData == lang){
+        // console.log(formData)
+        if(formData.toLowerCase() == lang){
             //do stuff
         }  else{
-            if(languageList.find((language) => language == formData) != undefined){
-                addHint();
+            //Check if guess is in the list of languages
+            if(languageList.includes(formData.toLowerCase()) && !guessed.includes(formData.toLowerCase())){ 
+                addHint({lang:formData.toLowerCase()});
+                addToGuessed(formData.toLowerCase());
                 incrementCount();
-            }
+            } 
         }
     }
     function handleChange(event){
