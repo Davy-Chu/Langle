@@ -4,10 +4,11 @@ export default function Form(props) {
     const [formData, setFormData] = React.useState("");
     // console.log(formData)
     const {lang, addHint, languageList, incrementCount, addToGuessed, guessed} = props;
+    let formRef = React.useRef();
     function handleGuess(event){
         event.preventDefault()
         //if there are still guesses left or game is not over
-        if(guessed.length <= 6){
+        if(guessed.length < 6){
             if(formData.toLowerCase() == lang){
                 //do stuff
             }  else{
@@ -17,6 +18,7 @@ export default function Form(props) {
                     addToGuessed(formData.toLowerCase());
                     incrementCount();
                     setFormData("");
+                    formRef.current.reset();
                     console.log(formData);
                 } 
             }
@@ -27,7 +29,7 @@ export default function Form(props) {
     }
     return(
         <div className="form">
-            <form id="text-area" onSubmit={handleGuess}>
+            <form id="text-area" ref={formRef} onSubmit={handleGuess}>
                 <input type="text" id="text-input" placeholder="Enter name of language" onChange={handleChange}></input>
                 <button id="submit-button">Guess</button>
             </form>

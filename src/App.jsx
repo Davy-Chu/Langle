@@ -14,8 +14,8 @@ Form in the middle of page that gives hints after each try
 After each try: Lets you know if the language is related/closer in the language tree
 */
 function App() {
-  const languages = ["chinese", "spanish", "french", "japanese","arabic","german","russian","portugese",
-    "italian","turkish","korean","polish","dutch","swedish","indonesian","greek","hebrew","thai","czech","farsi"];
+  const languages = ["english","chinese", "spanish", "french", "japanese","arabic","german","russian","portugese",
+    "italian","turkish","korean","polish","dutch","swedish","indonesian","greek","hebrew","thai","czech","farsi", "hindi","swahili"];
   const [guessCount, setCount] = useState(0);
   const [language, setLanguage] = useState("wtf");
   //Chooses a random language from the list of languages
