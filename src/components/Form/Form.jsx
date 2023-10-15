@@ -6,16 +6,20 @@ export default function Form(props) {
     const {lang, addHint, languageList, incrementCount, addToGuessed, guessed} = props;
     function handleGuess(event){
         event.preventDefault()
-        // console.log(formData)
-        if(formData.toLowerCase() == lang){
-            //do stuff
-        }  else{
-            //Check if guess is in the list of languages
-            if(languageList.includes(formData.toLowerCase()) && !guessed.includes(formData.toLowerCase())){ 
-                addHint({lang:formData.toLowerCase()});
-                addToGuessed(formData.toLowerCase());
-                incrementCount();
-            } 
+        //if there are still guesses left or game is not over
+        if(guessed.length <= 6){
+            if(formData.toLowerCase() == lang){
+                //do stuff
+            }  else{
+                //Check if guess is in the list of languages
+                if(languageList.includes(formData.toLowerCase()) && !guessed.includes(formData.toLowerCase())){ 
+                    addHint({lang:formData.toLowerCase()});
+                    addToGuessed(formData.toLowerCase());
+                    incrementCount();
+                    setFormData("");
+                    console.log(formData);
+                } 
+            }
         }
     }
     function handleChange(event){

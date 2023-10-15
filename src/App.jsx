@@ -31,7 +31,7 @@ function App() {
   useEffect(() => {
     
     getLang();
-    console.log(language);
+    // console.log(language);
   }, [])
   const [guessed, setGuessed] = useState([]);
   const addToGuessed = (lang) => {
@@ -48,8 +48,8 @@ function App() {
   //Adds a hint element to the page if a guess is incorrect
   const addHint = (hint) => {
     hint.lang = hint.lang[0].toUpperCase() + hint.lang.slice(1);
-    console.log(hint.lang)
-    setHintsList([...hintsList, {lang:hint.lang, langFamily:"Indo-European", emoji:"❄️", id:"2"}]);
+    // console.log(hint.lang)
+    setHintsList([...hintsList, {lang:hint.lang, langFamily:"Indo-European", emoji:"❄️", id:guessCount+2}]);
 
   }
   return (
